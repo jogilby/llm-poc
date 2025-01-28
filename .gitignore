@@ -184,5 +184,5 @@ override.tf.json
 *_override.tf.json
 .terraformrc
 terraform.rc
-# Don't ignore tfvars files that should be shared between team members
-# !example.tfvars
+# Ignore test PDF data
+*.pdf

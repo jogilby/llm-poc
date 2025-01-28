@@ -13,7 +13,8 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the app code
+# Copy the app code and modules
+COPY vectorization/ /app/vectorization/
 COPY app.py .
 
 # Expose port 80
