@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>LLM POC Frontend</title>
+  </head>
+  <body>
+    <h1>Proof of Concept: LLM on AWS</h1>
+    <div>
+      <label for="promptInput">Prompt:</label>
+      <input type="text" id="promptInput" size="50" />
+      <button id="generateBtn">Generate</button>
+    </div>
+    <div>
+      <h3>Response:</h3>
+      <p id="response"></p>
+    </div>
+    <script>
+      const generateBtn = document.getElementById("generateBtn");
+      const promptInput = document.getElementById("promptInput");
+      const responseEl = document.getElementById("response");
+
+      generateBtn.addEventListener("click", async () => {
+        const prompt = promptInput.value;
+        // You may want to change this endpoint to your actual server's public IP or DNS
+        const serverUrl = "http://localhost"; // or domain if you have one
+
+        try {
+          const res = await fetch(`${serverUrl}/generate`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt: prompt, max_length: 50 }),
+          });
+
+          if (!res.ok) {
+            throw new Error(`Server error: ${res.statusText}`);
+          }
+
+          const data = await res.json();
+          responseEl.textContent = data.response;
+        } catch (error) {
+          console.error(error);
+          responseEl.textContent = "Error generating text";
+        }
+      });
+    </script>
+  </body>
+</html>
