@@ -17,7 +17,7 @@ class LlamaQA:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         logging.info(f"Using device: {device}")
         
-        hf_token = "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"
+        hf_token = ""
         self.tokenizer = AutoTokenizer.from_pretrained(model_path, use_auth_token=hf_token).to(device)
         
         if low_precision:
