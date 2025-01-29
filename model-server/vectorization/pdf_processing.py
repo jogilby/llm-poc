@@ -1,11 +1,13 @@
 # pdf_processing.py
 import PyPDF2
+import logging
 
 def pdf_to_text_chunks(pdf_path, chunk_size=500, overlap=50):
     """
     Convert a PDF file into a list of text chunks.
     Each chunk has ~chunk_size characters (with overlap).
     """
+    logging.info(f"Processing PDF file: {pdf_path}")
     text_chunks = []
     reader = PyPDF2.PdfReader(open(pdf_path, 'rb'))
 

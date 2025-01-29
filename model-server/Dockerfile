@@ -15,6 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the app code and modules
 COPY vectorization/ /app/vectorization/
+COPY inferencing/ /app/inferencing/
 COPY app.py .
 
 # Expose port 80

@@ -1,5 +1,6 @@
 # indexing.py
 import faiss
+import logging
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
@@ -8,6 +9,7 @@ class PDFVectorStore:
         """t
         embedding_model: any model compatible with SentenceTransformers
         """
+        logging.info(f"Init vector store using model {embedding_model}")
         self.model = SentenceTransformer(embedding_model)
         self.index = None
         self.chunks = []

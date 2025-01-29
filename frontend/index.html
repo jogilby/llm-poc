@@ -23,13 +23,13 @@
       generateBtn.addEventListener("click", async () => {
         const prompt = promptInput.value;
         // You may want to change this endpoint to your actual server's public IP or DNS
-        const serverUrl = "http://localhost"; // or domain if you have one
+        const serverUrl = "http://3.87.32.132"; // or domain if you have one
 
         try {
-          const res = await fetch(`${serverUrl}/generate`, {
+          const res = await fetch(`${serverUrl}/queryllm`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ prompt: prompt, max_length: 50 }),
+            body: JSON.stringify({ prompt: prompt, max_length: 200 }),
           });
 
           if (!res.ok) {
